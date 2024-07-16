@@ -3,12 +3,12 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #4a90e2, #7bdff2); /* Light blue gradient */
+    background: linear-gradient(135deg, #4a90e2, #7bdff2); 
   }
   
   .logout-button {
     padding: 12px 24px;
-    background-color: #4a90e2; /* Light blue */
+    background-color: #4a90e2; 
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -18,7 +18,7 @@
   }
   
   .logout-button:hover {
-    background-color: #357dbf; /* Darker blue on hover */
+    background-color: #357dbf; 
   }
   
   .confirm-container {
