@@ -5,6 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  /* background: linear-gradient(#e1dfe6, #cac9ca); */
+  /* background-image: url("../src/Components/Assests/loyalty.jpg"); */
+  /* background-repeat: no-repeat; */
 }
 
 code {
