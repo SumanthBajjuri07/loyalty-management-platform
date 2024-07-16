@@ -51,22 +51,22 @@
   }
   
   .confirm-button {
-    background-color: #4a90e2; /* Light blue */
+    background-color: #4a90e2; 
     color: #fff;
     transition: background-color 0.3s ease;
   }
   
   .confirm-button:hover {
-    background-color: #357dbf; /* Darker blue on hover */
+    background-color: #357dbf; 
   }
   
   .cancel-button {
-    background-color: #6c757d; /* Gray */
+    background-color: #6c757d; 
     color: #fff;
     transition: background-color 0.3s ease;
   }
   
   .cancel-button:hover {
-    background-color: #5a6268; /* Darker gray on hover */
+    background-color: #5a6268; 
   }
   
