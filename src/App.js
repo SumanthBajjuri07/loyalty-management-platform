@@ -9,40 +9,39 @@ import PointsManagement from "./Components/PointsManagement/PointsManagement";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Logout from "./Components/Logout/Logout";
 import Welcome from "./Components/Welcome/Welcome";
-
-
+import './App.css';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const loggedInStatus = localStorage.getItem('isLoggedIn');
-    if (loggedInStatus === 'true') {
-      setIsLoggedIn(true);
-    }
-  }, []);
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
+
   return (
-  <Router>
-      <div className="app-container">
-        {isLoggedIn && <Sidebar />}
+    <Router>
+      <div className="App">
+        {isLoggedIn && <Sidebar handleLogout={handleLogout} />}
         <div className="main-content">
           <Routes>
-            <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-            <Route path="/welcome" element={isLoggedIn ? <Welcome /> : <Navigate to="/login" />} />
-            <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" />} />
-            <Route path="/members" element={isLoggedIn ? <MemberManagement /> : <Navigate to="/login" />} />
-            <Route path="/points" element={isLoggedIn ? <PointsManagement /> : <Navigate to="/login" />} />
-            <Route path="/transactions" element={isLoggedIn ? <TransactionManagement /> : <Navigate to="/login" />} />
+            <Route path="/login" element={<Login onLogin={handleLogin} />} />
+            <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Login onLogin={handleLogin} />} />
+            <Route path="/member-management" element={isLoggedIn ? <MemberManagement /> : <Login onLogin={handleLogin} />} />
+            <Route path="/points-management" element={isLoggedIn ? <PointsManagement /> : <Login onLogin={handleLogin} />} />
+            <Route path="/transaction-management" element={isLoggedIn ? <TransactionManagement /> : <Login onLogin={handleLogin} />} />
             <Route path="/logout" element={<Logout setIsLoggedIn={setIsLoggedIn} />} />
-            <Route path="*" element={<Navigate to={isLoggedIn ? "/welcome" : "/login"} />} />
+            <Route path="/" element={isLoggedIn ? <Dashboard /> : <Login onLogin={handleLogin} />} />
           </Routes>
         </div>
       </div>
     </Router>
   );
 };
- 
-export default App;
 
+export default App;
 
 

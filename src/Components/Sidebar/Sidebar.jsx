@@ -1,25 +1,32 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Sidebar.css';
 
-const Sidebar = () => {
+const Sidebar = ({ handleLogout }) => {
+  const navigate = useNavigate();
+
+  const handleLogoutClick = () => {
+    handleLogout();
+    navigate('/login');
+  };
+
   return (
     <div className="sidebar">
-      <ul>
+      <ul className="sidebar-nav">
         <li>
           <Link to="/dashboard">Dashboard</Link>
         </li>
         <li>
-          <Link to="/members">Manage Members</Link>
+          <Link to="/member-management">Manage Members</Link>
         </li>
         <li>
-          <Link to="/points">Points Management</Link>
+          <Link to="/points-management">Points Management</Link>
         </li>
         <li>
-          <Link to="/transactions">Transactions</Link>
+          <Link to="/transaction-management">Transactions</Link>
         </li>
         <li>
-          <Link to="/logout">Logout</Link>
+          <button className="logout-btn" onClick={handleLogoutClick}>Logout</button>
         </li>
       </ul>
     </div>
