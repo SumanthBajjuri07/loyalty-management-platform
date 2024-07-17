@@ -32,11 +32,11 @@ const PointsManagement = () => {
       .from('Transactions')
       .insert([
         {
-          member_id: 'default_member_id', // Replace with actual logic to get member_id
+          member_id: 'default_member_id', 
           username: selectedUsername,
           operation_type: operationType,
           credited_date_and_time: new Date().toISOString(),
-          status: 'default_status', // Replace with actual default status
+          status: 'default_status', 
           points: parseInt(points)
         }
       ]);

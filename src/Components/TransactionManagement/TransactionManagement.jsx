@@ -21,9 +21,9 @@ const TransactionManagement = () => {
         if (error) {
           console.error('Error fetching usernames:', error);
         } else {
-          console.log('Fetched usernames:', data); // Log the fetched data
+          console.log('Fetched usernames:', data); 
           const uniqueUsernames = [...new Set(data.map(item => item.username))];
-          console.log('Unique usernames:', uniqueUsernames); // Log unique usernames
+          console.log('Unique usernames:', uniqueUsernames); 
           setUsernames(uniqueUsernames);
         }
       };
