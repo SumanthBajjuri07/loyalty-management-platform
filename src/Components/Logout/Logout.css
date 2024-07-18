@@ -24,7 +24,7 @@
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    background-color: #3498db; /* Light blue color */
+    background-color: #3498db; 
     border: none;
     border-radius: 4px;
     color: white;
@@ -33,22 +33,22 @@
   }
   
   button:hover {
-    background-color: #2980b9; /* Darker blue on hover */
+    background-color: #2980b9; 
   }
   
   .confirm-btn {
-    background-color: #e74c3c; /* Light red color */
+    background-color: #e74c3c; 
   }
   
   .confirm-btn:hover {
-    background-color: #c0392b; /* Darker red on hover */
+    background-color: #c0392b; 
   }
   
   .cancel-btn {
-    background-color: #95a5a6; /* Light grey color */
+    background-color: #95a5a6; 
   }
   
   .cancel-btn:hover {
-    background-color: #7f8c8d; /* Darker grey on hover */
+    background-color: #7f8c8d; 
   }
   
