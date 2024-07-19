@@ -48,13 +48,13 @@
     padding: 10px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #4CAF50;
+    background-color: #3498db;
     color: white;
     border: none;
   }
   
   .add-member-form button:hover {
-    background-color: #45a049;
+    background-color: #3498db;
   }
   
   .edit-icon, .delete-icon {

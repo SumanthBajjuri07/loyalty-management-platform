@@ -85,4 +85,12 @@ body {
       width: calc(100% - 10px);
     }
   }
+
+  .success-message {
+    color: green;
+    margin-top: 1em;
+    text-align: center;
+    font-weight: bold;
+}
+
   

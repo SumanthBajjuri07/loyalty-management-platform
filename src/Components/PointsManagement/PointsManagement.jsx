@@ -12,10 +12,21 @@ const PointsManagement = () => {
   const [selectedUsername, setSelectedUsername] = useState('');
   const [operationType, setOperationType] = useState('Credit');
   const [points, setPoints] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   useEffect(() => {
     fetchUsernames();
   }, []);
+
+  useEffect(() => {
+    if (successMessage) {
+      const timer = setTimeout(() => {
+        setSuccessMessage('');
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [successMessage]);
 
   const fetchUsernames = async () => {
     let { data: Transactions, error } = await supabase
@@ -43,8 +54,13 @@ const PointsManagement = () => {
 
     if (error) {
       console.error('Error inserting transaction:', error);
+      setSuccessMessage(''); 
     } else {
       console.log('Transaction inserted successfully:', data);
+      setSuccessMessage('Insertion successful'); 
+      setSelectedUsername('');
+      setOperationType('Credit');
+      setPoints('');
     }
   };
 
@@ -84,6 +100,7 @@ const PointsManagement = () => {
         />
       </div>
       <button onClick={handleInsert}>Submit</button>
+      {successMessage && <p className="success-message">{successMessage}</p>}
     </div>
   );
 };
