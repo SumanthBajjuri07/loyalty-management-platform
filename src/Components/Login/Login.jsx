@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 const Login = ({ onLogin }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [error, setError] = React.useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.body.classList.add('login-page');
+    return () => {
+      document.body.classList.remove('login-page');
+    };
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,6 +57,3 @@ const Login = ({ onLogin }) => {
 };
 
 export default Login;
-
-
-
