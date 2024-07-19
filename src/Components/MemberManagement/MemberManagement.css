@@ -1,5 +1,4 @@
-
-.transaction-form {
+   .transaction-form {
     padding: 20px;
     font-family: Arial, sans-serif;
   }
@@ -66,5 +65,12 @@
   
   .edit-icon:hover, .delete-icon:hover {
     color: #007bff;
+  }
+  
+  .success-message {
+    text-align: center;
+    color: green;
+    font-weight: bold;
+    margin: 20px 0;
   }
   

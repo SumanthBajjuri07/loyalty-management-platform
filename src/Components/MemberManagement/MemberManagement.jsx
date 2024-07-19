@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import './MemberManagement.css';
@@ -12,6 +11,7 @@ const MemberManagement = () => {
   const [members, setMembers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [newMember, setNewMember] = useState({ member_id: '', name: '', email: '', points: 0 });
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     fetchMembers();
@@ -40,16 +40,25 @@ const MemberManagement = () => {
     try {
       const { data, error } = await supabase.from('Members').insert([newMember]);
       if (error) {
-        throw error;
-      }
-      if (data && data.length > 0) {
-        setMembers([...members, data[0]]);
-        setNewMember({ member_id: '', name: '', email: '', points: 0 });
+        console.error('Error inserting member:', error.message);
+        setMessage('Error adding member. Please try again.');
+        setTimeout(() => setMessage(''), 3000);
       } else {
-        console.error('Insert operation did not return expected data:', data);
+        console.log('Insert operation data:', data);
+        if (data) {
+          setMembers([...members, newMember]);  
+          setNewMember({ member_id: '', name: '', email: '', points: 0 });
+          setMessage('Member added successfully!');
+          setTimeout(() => setMessage(''), 3000);
+        } else {
+          setMessage('Member added successfully!');
+          setTimeout(() => setMessage(''), 3000);
+        }
       }
     } catch (error) {
       console.error('Error inserting member:', error.message);
+      setMessage('Error adding member. Please try again.');
+      setTimeout(() => setMessage(''), 3000);
     }
   };
 
@@ -60,8 +69,12 @@ const MemberManagement = () => {
       .eq('id', id);
     if (error) {
       console.error(error);
+      setMessage('Error updating member. Please try again.');
+      setTimeout(() => setMessage(''), 3000);
     } else {
       fetchMembers();
+      setMessage('Member updated successfully!');
+      setTimeout(() => setMessage(''), 3000);
     }
   };
 
@@ -72,19 +85,23 @@ const MemberManagement = () => {
         throw error;
       }
       setMembers(members.filter(member => member.id !== id));
+      setMessage('Member deleted successfully!');
+      setTimeout(() => setMessage(''), 3000);
     } catch (error) {
       console.error('Error deleting member:', error.message);
+      setMessage('Error deleting member. Please try again.');
+      setTimeout(() => setMessage(''), 3000);
     }
   };
-  
 
   const filteredMembers = members.filter((member) =>
-    member.name.toLowerCase().includes(searchTerm.toLowerCase())
+    member.name?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <div className="transaction-form">
       <h1>Member Management</h1>
+      {message && <div className="success-message">{message}</div>}
       <input
         type="text"
         placeholder="Search by name"
@@ -179,7 +196,5 @@ const MemberManagement = () => {
   );
 };
 
-export default  MemberManagement;
-
-
+export default MemberManagement;
 
