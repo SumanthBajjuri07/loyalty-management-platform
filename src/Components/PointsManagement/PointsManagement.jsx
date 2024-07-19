@@ -32,11 +32,11 @@ const PointsManagement = () => {
       .from('Transactions')
       .insert([
         {
-          member_id: 'default_member_id', 
+          member_id: 'M1', 
           username: selectedUsername,
           operation_type: operationType,
           credited_date_and_time: new Date().toISOString(),
-          status: 'default_status', 
+          status: 'Completed', 
           points: parseInt(points)
         }
       ]);
